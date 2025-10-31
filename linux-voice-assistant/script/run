@@ -1,0 +1,14 @@
+#!/command/with-contenv bashio
+set -e  # Exit immediately if a command fails
+bashio::log.info "Starting Linux Voice Assistant..."
+# Define paths
+APP_DIR="/app"
+VENV_DIR="$APP_DIR/.venv"
+PYTHON="$VENV_DIR/bin/python"
+MODULE_DIR="$APP_DIR/linux-voice-assistant"
+NAME=$(bashio::config 'name')
+
+bashio::log.info "✅ Using virtual environment at $VENV_DIR"
+
+# Run your module
+exec "$PYTHON" -m linux_voice_assistant --name "$NAME" --debug
